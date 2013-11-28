@@ -8,12 +8,11 @@ $pass = "root";
 $database = "TreeHouse"; 
 $query_var = htmlspecialchars($_GET["LastName"]);
 
-$linkID = mysql_connect($host, $user, $pass) or die("Could not connect to host."); 
-mysql_select_db($database, $linkID) or die("Could not find database."); 
+$dbs= mysql_connect($host, $user, $pass)OR die('couldnt connect to database: '. mysql_error());
+        @mysql_select_db($database)OR die('couldnt establish connection: '. mysql_error());
 
-
-$query = "SELECT YouthId, FirstName, LastName, DOB FROM dbo_YouthInfo WHERE LastName = '{$query_var}'"; 
-$resultID = mysql_query($query, $linkID) or die("Data not found."); 
+$query="SELECT YouthId, FirstName, LastName, DOB FROM dbo_youthinfo WHERE LastName ='$query_var'"; //define level here
+$resultID=mysql_query($query)OR die("Query: $query\n<br />MySQL Error:".mysql_error());
 
 $xml_output = "<?xml version=\"1.0\"?>\n"; 
 $xml_output .= "<results>\n"; 
