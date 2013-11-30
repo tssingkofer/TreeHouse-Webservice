@@ -47,7 +47,13 @@ echo $xml_output;
                 $resultID=mysql_query($query)OR die("Query: $query\n<br />MySQL Error:".mysql_error());
                 
                 
-                //CREATE TABLE `treehouse`.`dbo_attendence` (`id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,`YouthID` INT( 11 ) NOT NULL COMMENT 'foreign key',`date` DATETIME NOT NULL ,INDEX ( `YouthID` )) ENGINE = InnoDB;
-       }
+                /*$xml_output = "<?xml version=\"1.0\"?>\n";
+                $xml_output .= "<results>\n";
+
+                
+                $row = mysql_fetch_assoc($resultID);
+                $xml_output .= "\t<YouthId>" . "" . "</YouthId>\n";
+                $xml_output .= "</results>"; */
+        }
 }
 ?> 
