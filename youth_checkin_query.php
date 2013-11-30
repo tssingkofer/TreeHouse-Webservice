@@ -23,6 +23,7 @@
 
 for($x = 0 ; $x < mysql_num_rows($resultID) ; $x++){
     $row = mysql_fetch_assoc($resultID);
+    $xml_output .= "<student>";
     $xml_output .= "\t<YouthId>" . $row['YouthId'] . "</YouthId>\n";
     //first name
     $xml_output .= "\t\t<FirstName>" . $row['FirstName'] . "</FirstName>\n";
@@ -30,7 +31,7 @@ for($x = 0 ; $x < mysql_num_rows($resultID) ; $x++){
     $xml_output .= "\t\t<LastName>" . $row['LastName'] . "</LastName>\n";
     //race
     $xml_output .= "\t\t\t<DOB>" . $row['DOB'] . "</DOB>\n";
-    
+    $xml_output .= "</student>";
 }
 
 $xml_output .= "</results>";
