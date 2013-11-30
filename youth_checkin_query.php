@@ -7,10 +7,13 @@ $user = "root";
 $pass = "root"; 
 $database = "TreeHouse"; 
 $query_var = htmlspecialchars($_GET["LastName"]);
+$submit_var = htmlspecialchars($_GET["id"]);
 
 $dbs= mysql_connect($host, $user, $pass)OR die('couldnt connect to database: '. mysql_error());
         @mysql_select_db($database)OR die('couldnt establish connection: '. mysql_error());
 
+if ($query_var != "")
+{
 $query="SELECT YouthId, FirstName, LastName, DOB FROM dbo_youthinfo WHERE LastName ='$query_var'"; //define level here
 $resultID=mysql_query($query)OR die("Query: $query\n<br />MySQL Error:".mysql_error());
 
@@ -32,5 +35,19 @@ for($x = 0 ; $x < mysql_num_rows($resultID) ; $x++){
 $xml_output .= "</results>"; 
 
 echo $xml_output; 
-
+} else
+{
+       if ($submit_var != "")
+       {
+                $query2 ="CREATE TABLE IF NOT EXISTS dbo_attendance (`id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY, `YouthID` INT( 11 ) NOT NULL COMMENT 'foreign key',`date` DATETIME NOT NULL ,INDEX ( `YouthID` ),
+                FOREIGN KEY (YouthID) REFERENCES dbo_youthinfo(YouthID) ON UPDATE CASCADE ON DELETE CASCADE)";
+                //ALTER TABLE `dbo_attendance` ADD FOREIGN KEY ( `YouthID` ) REFERENCES `treehouse`.`dbo_youthinfo` (`YouthID`) ON DELETE CASCADE ON UPDATE CASCADE ;
+                $query="INSERT INTO `treehouse`.`dbo_attendance` (`id` ,`YouthID` ,`date`)VALUES (NULL , '$submit_var', date('Y-m-d H:i:s'))"; //define level here
+                $requltID2=mysql_query($query2)OR die("Query: $query2\n<br />MySQL Error:".mysql_error());
+                $resultID=mysql_query($query)OR die("Query: $query\n<br />MySQL Error:".mysql_error());
+                
+                
+                //CREATE TABLE `treehouse`.`dbo_attendence` (`id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,`YouthID` INT( 11 ) NOT NULL COMMENT 'foreign key',`date` DATETIME NOT NULL ,INDEX ( `YouthID` )) ENGINE = InnoDB;
+       }
+}
 ?> 
