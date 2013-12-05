@@ -25,8 +25,7 @@ for($x = 0 ; $x < mysql_num_rows($resultID) ; $x++){
     $xml_output .= "\t\t<FirstName>" . $row['FirstName'] . "</FirstName>\n";
     //last name
     $xml_output .= "\t\t<LastName>" . $row['LastName'] . "</LastName>\n";
-    //race
-    $xml_output .= "\t\t\t<DOB>" . $row['DOB'] . "</DOB>\n";
+    
     $xml_output .= "</student>";
 	
 $xml_output .= "</results>";
