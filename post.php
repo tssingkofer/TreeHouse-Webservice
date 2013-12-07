@@ -1,4 +1,4 @@
-?php
+<?php
 $host = "localhost";
 $user = "root";
 $pass = "root";
@@ -25,7 +25,11 @@ $GradDate = htmlspecialchars($_POST["GradDate"]);
 $dbs= mysql_connect($host, $user, $pass)OR die('couldnt connect to database: '. mysql_error());
 @mysql_select_db($database)OR die('couldnt establish connection: '. mysql_error());
 
-$query="INSERT INTO `treehouse`.`dbo_youthinfo` ('FirstName', 'LastName', 'MI', 'Address', 'City', 'State', 'Zip', 'PhoneHome', 'PhoneMobile', 'Email', 'DOB', 'Age', 'Gender', 'Grade', 'School', 'HighSchool', 'GradDate')VALUES ($FirstName, $LastName, $MI, $Address, $City, $State, $Zip, $PhoneHome, $PhoneMobile, $Email, $DOB, $Age, $Gender, $Grade, $School, $HighSchool, $GradDate)";
+$query="INSERT INTO `treehouse`.`dbo_youthinfo` (`FirstName`, `LastName`, `MI`, `Address`, `City`, `State`, `Zip`, `PhoneHome`, `PhoneMobile`, `Email`, `DOB`, `Age`, `Gender`, `Grade`, `School`, `HighSchool`, `GradDate`)VALUES ('$FirstName', '$LastName', '$MI', '$Address', '$City', '$State', '$Zip', '$PhoneHome', '$PhoneMobile', '$Email', '$DOB', '$Age', '$Gender', '$Grade', '$School', '$HighSchool', '$GradDate')";
+    //'Firstname', 'LastName', 'MI', 'Address', 'City', 'State', 'Zip', 'PhoneHome', 'PhoneMobile', 'Email', 'DOB', 'Age', 'Gender', 'Grade', 'School', 'HighSchool', 'GradDate')";
+
+//'$FirstName', '$LastName', '$MI', '$Address', '$City', '$State', '$Zip', '$PhoneHome', '$PhoneMobile', '$Email', '$DOB', '$Age', '$Gender', '$Grade', '$School', '$HighSchool', '$GradDate')";
+
 
 $requltID=mysql_query($query)OR die("Query: $query\n<br />MySQL Error:".mysql_error());
 
