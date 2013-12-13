@@ -10,13 +10,13 @@
     $dbs= mysql_connect($host, $user, $pass)OR die('couldnt connect to database: '. mysql_error());
     @mysql_select_db($database)OR die('couldnt establish connection: '. mysql_error());
 	
-$query="SELECT ProgramID,ActivityName,ProgramDate FROM treehouse.dbo_Programs WHERE ActivityName IS NOT NULL ORDER BY ProgramDate LIMIT 10";        
+    $query="SELECT ProgramID,ActivityName,ProgramDate FROM dbo_programs WHERE ActivityName IS NOT NULL ORDER BY ProgramDate LIMIT 10";
+    
+    $resultID=mysql_query($query)OR die("Query: $query\n<br />MySQL Error:".mysql_error());
+    
+    $xml_output = "<?xml version=\"1.0\"?>\n";
 
-$resultID=mysql_query($query)OR die("Query: $query\n<br />MySQL Error:".mysql_error());
-        
-        $xml_output = "<?xml version=\"1.0\"?>\n";
-
-        $xml_output .= "<results>\n";
+$xml_output .= "<results>\n";
 
 for($x = 0 ; $x < mysql_num_rows($resultID) ; $x++){
     $row = mysql_fetch_assoc($resultID);
@@ -29,9 +29,9 @@ for($x = 0 ; $x < mysql_num_rows($resultID) ; $x++){
     
     $xml_output .= "</student>";
 }
-	
+
 $xml_output .= "</results>";
 echo $xml_output;
 
-	
-	?>
+
+?>
