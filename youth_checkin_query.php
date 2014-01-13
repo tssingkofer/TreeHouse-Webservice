@@ -3,8 +3,8 @@
 header("Content-type: text/xml");
 
 $host = "localhost";
-$user = "root";
-$pass = "root";
+$user = "treehouseRead";
+$pass = "worstcasescenario";
 $database = "treehouse";
 $query_var = htmlspecialchars($_GET["FirstName"]);
 $submit_var = htmlspecialchars($_GET["id"]);

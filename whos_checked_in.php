@@ -3,8 +3,8 @@
     header("Content-type: text/xml");
     
     $host = "localhost";
-    $user = "root";
-    $pass = "root";
+    $user = "treehouseRead";
+    $pass = "worstcasescenario";
     $database = "treehouse";
     
     $dbs= mysql_connect($host, $user, $pass)OR die('couldnt connect to database: '. mysql_error());
