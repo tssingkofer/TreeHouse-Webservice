@@ -13,7 +13,7 @@ $Username = htmlspecialchars($_POST["Username"]);
 $dbs= mysql_connect($host, $user, $pass)OR die('couldnt connect to database: '. mysql_error());
 @mysql_select_db($database)OR die('couldnt establish connection: '. mysql_error());
 
-$query2 ="CREATE TABLE IF NOT EXISTS dbo_admin (`id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY, `Username` VARCHAR( 11 ) NOT NULL,`Password` VARCHAR(100) NOT NULL)";
+$query2 ="CREATE TABLE IF NOT EXISTS dbo_admin (`id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY, `Username` VARCHAR( 11 ) NOT NULL,`Passwd` VARCHAR(100) NOT NULL)";
     
 $query="Select Username, Passwd FROM dbo_admin WHERE Username = '$Username' and Passwd = '$Password'";
 
