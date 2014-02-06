@@ -14,7 +14,7 @@ $dbs= mysql_connect($host, $user, $pass)OR die('couldnt connect to database: '. 
 
 if ($query_var != "")
 {
-    $query="SELECT YouthId, FirstName, LastName, DOB FROM dbo_youthinfo WHERE FirstName ='$query_var'"; //define level here
+    $query="SELECT YouthId, FirstName, LastName, DATE_FORMAT(dob,'%m-%d-%Y') as DOB FROM dbo_youthinfo WHERE FirstName ='$query_var'"; //define level here
     $resultID=mysql_query($query)OR die("Query: $query\n<br />MySQL Error:".mysql_error());
     
     $xml_output = "<?xml version=\"1.0\"?>\n";
