@@ -13,7 +13,7 @@
 	$query="Select YouthID,FirstName,LastName from treehouse.dbo_youthinfo where YouthID in (SELECT YouthID FROM treehouse.dbo_attendance where date = current_date)";
         $resultID=mysql_query($query)OR die("Query: $query\n<br />MySQL Error:".mysql_error());
         
-        $xml_output = "<?xml version=\"1.0\"?>\n";
+	$xml_output = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
 
         $xml_output .= "<results>\n";
 
