@@ -22,7 +22,7 @@ $resultID2=mysql_query($query2)OR die("Query: $query\n<br />MySQL Error:".mysql_
     
 $resultID=mysql_query($query)OR die("Query: $query\n<br />MySQL Error:".mysql_error());
 
-$xml_output = "<?xml version=\"1.0\"?>\n";
+$xml_output = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
 
 $xml_output .= "<results>\n";
 if (mysql_num_rows($resultID) == 1)
